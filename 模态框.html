@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #model{
+            width:500px;
+            height:300px;
+            margin-left:-250px;
+            margin-top:-150px;
+            background-color: white;
+            position:fixed;
+            top:50%;
+            left:50%;
+            z-index: 200;
+        }
+        #outer{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            z-index:100;
+            padding-top:10%;
+            text-align:center;
+            background-repeat:no-repeat;
+            background-position:center center;
+            background-color:#000;
+            background-color:rgba(0,0,0,0.5);
+            filter:alpha(opacity=50);
+            display: none;
+        }
+        #outer h2 {
+            font-size: 36px;
+            padding: 15px 5px;
+            text-shadow: 1px 1px 5px yellowgreen;
+            border-bottom: 1px solid #666;
+        }
+        #outer p {
+            padding-left: 36px;
+            line-height: 150px;
+            height: 150px;
+            font-size: 20px;
+            border-bottom: 1px solid #666;
+        }
+        #outer button {
+            float: right;
+            text-align: center;
+            margin-top: 10px;
+            margin-right: 25px;
+            line-height: 35px;
+            width: 50px;
+            height: 35px;
+            border: 1px solid #666;
+            border-radius: 5px;
+        }
+        #outer button:hover {
+            background-color: #666;
+            color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <!-- <button id="show">弹出模态框</button> -->
+    <div id="outer">
+        <div tabindex="-1" id="model">
+            <h2>Are you sure?</h2>
+            <p>真的要删除了哦！</p>
+            <div>
+                <button>取消</button>
+                <button>确定</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("model").onblur=function(){
+            document.getElementById("outer").style.display="none"
+        }
+        document.getElementById("model").onfocus=function(){
+            document.getElementById("outer").style.display="block"
+        }
+        document.getElementById("show").onclick=function(){
+            document.getElementById("outer").style.display="block"
+        }
+    </script>
+</body>
+</html>
